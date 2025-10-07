@@ -20,9 +20,9 @@ OWNER_ID = os.environ.get('OWNER_ID');
 
 @client.event
 async def on_raw_reaction_add(event):
-    print(f"RAW REACTION {event.emoji}")
     # I am allowed to fish react (tyranny)
-    if event.member.bot or event.user_id is OWNER_ID:
+    if event.member.bot or str(event.user_id) == str(OWNER_ID):
+        print("Priviledge user, fish reaction will slide")
         return
     if event.emoji.name == "🐟":
         print(f"Detected fish reaction from {event.member.name}")
