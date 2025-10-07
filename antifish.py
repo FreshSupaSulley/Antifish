@@ -2,6 +2,7 @@ import discord
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
+import emoji
 
 # Load env variables
 load_dotenv()
@@ -17,15 +18,17 @@ async def on_ready():
 
 # I am allowed to fish react
 OWNER_ID = os.environ.get('OWNER_ID');
+illegal_reactions = ["shrimp", "fish", "octopus", "tropical_fish", "fish_cake", "fishing_pole_and_fish", "fishing_pole", "blowfish", "jellyfish", "shark", "lobster", "crab", "squid", "whale", "whale2", "oyster", "fried_shrimp", "seal", "dolphin", "coral", "crocodile", "seaweed"]
 
 @client.event
 async def on_raw_reaction_add(event):
-    # I am allowed to fish react (tyranny)
-    if event.member.bot or str(event.user_id) == str(OWNER_ID):
-        print("Priviledge user, fish reaction will slide")
-        return
-    if event.emoji.name == "🐟":
-        print(f"Detected fish reaction from {event.member.name}")
+    emoji_name = emoji.demojize(event.emoji.name).strip(":")
+    if emoji_name in illegal_reactions:
+        print(f"Detected fish reaction from {event.member.name}: {event.emoji}")
+        # I am allowed to fish react (tyranny)
+        if event.member.bot or str(event.user_id) == str(OWNER_ID):
+            print("Priviledge user, fish reaction will slide")
+            return
         # Delete the message
         # https://discordpy.readthedocs.io/en/latest/api.html?highlight=on_reaction#discord.WebhookMessage.remove_reaction
         try:
