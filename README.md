@@ -1,0 +1,3 @@
+# Antifish
+
+Bans fish reactions.
