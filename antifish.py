@@ -32,9 +32,9 @@ async def on_raw_reaction_add(event):
             channel = client.get_channel(event.channel_id)
             message = await channel.fetch_message(event.message_id)
             await message.remove_reaction(event.emoji, event.member)
-            print(f"Deleted message ID {event.message_id} after fish reaction")
+            print(f"USER: {event.member}")
             # Now timeout the member
-            await event.member.timeout(timedelta(minutes=1), reason="Fish reactions are banned")
+            await event.member.timeout(timedelta(seconds=5), reason="Fish reactions are banned")
         except Exception as e:
             print(f"Failed to delete reaction: {e}")
 
