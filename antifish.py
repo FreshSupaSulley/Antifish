@@ -22,6 +22,7 @@ illegal_reactions = ["shrimp", "fish", "octopus", "tropical_fish", "fish_cake", 
 
 @client.event
 async def on_raw_reaction_add(event):
+    print(f"Reaction added: {event.emoji} by {event.member}")
     emoji_name = emoji.demojize(event.emoji.name).strip(":")
     if emoji_name in illegal_reactions:
         print(f"Detected fish reaction from {event.member.name}: {event.emoji}")
