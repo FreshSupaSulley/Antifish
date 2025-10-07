@@ -18,7 +18,7 @@ async def on_ready():
 
 # I am allowed to fish react
 OWNER_ID = os.environ.get('OWNER_ID');
-illegal_reactions = ["shrimp", "fish", "octopus", "tropical_fish", "fish_cake", "fishing_pole_and_fish", "fishing_pole", "blowfish", "jellyfish", "shark", "lobster", "crab", "squid", "whale", "whale2", "oyster", "fried_shrimp", "seal", "dolphin", "coral", "crocodile", "seaweed"]
+illegal_reactions = ["shrimp", "fish", "octopus", "tropical_fish", "fish_cake", "fish_cake_with_swirl", "fishing_pole_and_fish", "fishing_pole", "blowfish", "jellyfish", "shark", "lobster", "crab", "squid", "whale", "whale2", "oyster", "fried_shrimp", "seal", "dolphin", "coral", "crocodile", "seaweed"]
 
 @client.event
 async def on_raw_reaction_add(event):
